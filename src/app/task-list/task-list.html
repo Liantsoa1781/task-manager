@@ -5,3 +5,7 @@
         <li>{{task}}</li> 
     }
 </ul>
+
+<h2>Ajouter une nouvelle tâche</h2>
+<input [ngModel]="newTask()" (ngModelChange)="newTask.set($event)">
+<button (click)="addTask()">Ajouter</button>
