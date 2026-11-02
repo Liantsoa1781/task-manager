@@ -10,7 +10,12 @@ import { FormsModule } from '@angular/forms';
 })
 
 export class TaskList {
-  tasks: string[] = ['Faire les courses', 'Réviser Angular', 'Finir le TP'];  
+  tasks = [
+    { desc : 'Faire les courses', completed : false },
+    { desc : 'Réviser Angular', completed : false },
+    { desc : 'Finir le TP', completed : true },
+  ];  
+
   newTask = signal('');
 
   //Methode pour ajouter une tache
@@ -19,7 +24,7 @@ export class TaskList {
     const task = this.newTask();
 
     //Renvoie la valeur ajouter dans le tableau des tasks
-    this.tasks.push(task);
+    this.tasks.push({desc : task, completed : false});
 
     //Vider le champs de saisie
     this.newTask.set('');
