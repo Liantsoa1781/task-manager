@@ -6,4 +6,7 @@ import { Component } from '@angular/core';
   styleUrl: './task-list.css',
   templateUrl: './task-list.html',
 })
-export class TaskList {}
+
+export class TaskList {
+  tasks: string[] = ['Faire les courses', 'Réviser Angular', 'Finir le TP'];  
+}

@@ -1,1 +1,7 @@
-<p>task-list works!</p>
+<h2>Liste des tâches</h2>
+
+<ul>
+    @for (task of tasks; track task) { 
+        <li>{{task}}</li> 
+    }
+</ul>
