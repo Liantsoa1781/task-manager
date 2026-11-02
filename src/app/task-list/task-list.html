@@ -1,8 +1,8 @@
 <h2>Liste des tâches</h2>
 
 <ul>
-    @for (task of tasks; track task) { 
-        <li>{{task}}</li> 
+    @for (task of tasks; track task; let i = $index) { 
+        <li>{{task}} <button (click)="deleteTask(i)">Supprimer</button> </li> 
     }
 </ul>
 

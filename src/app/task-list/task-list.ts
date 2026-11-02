@@ -13,6 +13,7 @@ export class TaskList {
   tasks: string[] = ['Faire les courses', 'Réviser Angular', 'Finir le TP'];  
   newTask = signal('');
 
+  //Methode pour ajouter une tache
   addTask(){
     //Prends la valeur du task dans le champs
     const task = this.newTask();
@@ -22,6 +23,16 @@ export class TaskList {
 
     //Vider le champs de saisie
     this.newTask.set('');
+  }
+
+  //Methode poour supprimer une tache
+  deleteTask(i: number){
+    //Verifies si l'index existe ou pas
+    if(i<0 || i>=this.tasks.length){
+      alert("La tâche n'esiste pas"); 
+    }
+    //Supprime une seule fois à partir de l'index
+    this.tasks.splice(i, 1);
   }
 
 }
