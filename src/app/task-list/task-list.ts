@@ -40,4 +40,12 @@ export class TaskList {
     this.tasks.splice(i, 1);
   }
 
+  toogleTask(i: number){
+    if(i<0 || i>=this.tasks.length){
+      alert("La tâche n'esiste pas"); 
+    }
+    //Inverse la valeur du bouton
+    this.tasks[i].completed = this.tasks[i].completed ? false : true;
+  }
+
 }
