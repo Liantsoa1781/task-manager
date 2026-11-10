@@ -9,19 +9,17 @@
         </tr>
     </thead>
     <tbody>
-        @for (task of tasks; track task; let i = $index) { 
+        @for (task of taskService.getTasks(); track task; let i = $index) { 
             <tr>
                 <td>{{task.desc}}</td>
-                <td><button (click)="toogleTask(i)">{{task.completed ? 'Terminé' : 'En cours'}}</button></td>
-                <td><button (click)="deleteTask(i)">Supprimer</button></td>
+                <td><button (click)="taskService.tooggleTask(i)">{{task.completed ? 'Terminé' : 'En cours'}}</button></td>
+                <td><button (click)="taskService.deleteTask(i)">Supprimer</button></td>
             </tr>
         }
     </tbody>
     
 </table>
     
-
-
 <h2>Ajouter une nouvelle tâche</h2>
-<input [ngModel]="newTask()" (ngModelChange)="newTask.set($event)">
-<button (click)="addTask()">Ajouter</button>
+<input [ngModel]="taskService.newTask()" (ngModelChange)="taskService.newTask.set($event)">
+<button (click)="taskService.addTask()">Ajouter</button>
