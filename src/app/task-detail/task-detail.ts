@@ -27,7 +27,7 @@ export class TaskDetail {
     validerModification() {
       this.taskService.saveTasks();
       this.router.navigate(['/tasks']);
-      
+
       console.log('Modification validée');
     }
 }

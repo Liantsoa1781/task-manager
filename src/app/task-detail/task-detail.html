@@ -1,10 +1,21 @@
 <p>Details de la tâche</p>
 
-<label>Nom:  </label>
-    <input [(ngModel)]="task.desc">
+    <label>Nom:  </label>
+    <input [(ngModel)]="task.desc"> <br>
 
-<label>Etat: </label>
-    <input type="checkbox" [(ngModel)]="task.completed"]> <br>
+    <label>Etat: {{task.completed ? 'Terminé' : 'En cours'}}</label><br>
+
+    <label>Priorité: </label>
+    <input type="text" [(ngModel)]="task.priority"]> <br>
+
+    <label>Assigné à: </label>
+    <input type="text" [(ngModel)]="task.assignedTo"]> <br>
+
+    <label>Date d'échéance: </label>
+    <input type="text" [(ngModel)]="task.dueDate"]> <br>
+
+    <label>Date de création: </label>
+    <input type="text" [(ngModel)]="task.createdAt"]> <br>
 
 <button (click)="validerModification()">Valider</button>
 

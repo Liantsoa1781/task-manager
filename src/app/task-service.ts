@@ -3,6 +3,17 @@ import { Injectable, signal } from '@angular/core';
 export interface Task{
     desc: string;
     completed: boolean;
+    priority: string;
+    assignedTo: string;
+    dueDate: string;
+    createdAt: string;
+}
+
+export interface NewTask{
+    desc: string;
+    priority: string;
+    assignedTo: string;
+    dueDate: string;
 }
 
 @Injectable({
@@ -12,7 +23,12 @@ export interface Task{
 export class TaskService {
     tasks: Task[] = [];
 
-    newTask = signal('');
+    newtask = signal<NewTask>({
+        desc: '',
+        priority: '',
+        assignedTo: '',
+        dueDate: ''
+    });
 
       // Méthode pour récupérer les tâches
     getTasks(): Task[] {
@@ -35,19 +51,28 @@ export class TaskService {
     
     //Methode pour ajouter une tache
     addTask(){
-        //Prends la valeur du task dans le champs
-        const task = this.newTask();
+        //Prends les valeurs dans les champs
+        const newtask = this.newtask();
     
-        //Renvoie la valeur ajouter dans le tableau des tasks
+        //Renvoie les valeurs ajoutees dans le tableau des tasks
         this.tasks.push({
-            desc: task,
-            completed: false
+            desc: newtask.desc,
+            completed: false,
+            priority: newtask.priority,
+            assignedTo: newtask.assignedTo,
+            dueDate: newtask.dueDate,
+            createdAt: new Date().toISOString()
         });
 
         //Ajoutes les valeurs des tasks dans loalStorage
         this.saveTasks();
         //Vider le champs de saisie
-        this.newTask.set('');
+        this.newtask.set({
+            desc: '',
+            priority: '',
+            assignedTo: '',
+            dueDate: ''
+        });
     }
     
     //Methode poour supprimer une tache

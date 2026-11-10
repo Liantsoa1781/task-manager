@@ -21,5 +21,16 @@
 </table>
     
 <h2>Ajouter une nouvelle tâche</h2>
-<input [ngModel]="taskService.newTask()" (ngModelChange)="taskService.newTask.set($event)">
+<label for="">Description : </label>
+<input [(ngModel)]="taskService.newtask().desc"><br>
+
+<label for="">Priorité : </label>
+<input [(ngModel)]="taskService.newtask().priority"><br>
+
+<label for="">Assigné à : </label>
+<input [(ngModel)]="taskService.newtask().assignedTo"><br>
+
+<label for="">Date d'échéance : </label>
+<input [(ngModel)]="taskService.newtask().dueDate"><br>
+
 <button (click)="taskService.addTask()">Ajouter</button>
