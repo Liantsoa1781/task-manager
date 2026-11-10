@@ -11,7 +11,7 @@
     <tbody>
         @for (task of taskService.getTasks(); track task; let i = $index) { 
             <tr>
-                <td>{{task.desc}}</td>
+                <td> <a [routerLink]="['/task', i]"> {{task.desc}} </a></td>
                 <td><button (click)="taskService.tooggleTask(i)">{{task.completed ? 'Terminé' : 'En cours'}}</button></td>
                 <td><button (click)="taskService.deleteTask(i)">Supprimer</button></td>
             </tr>

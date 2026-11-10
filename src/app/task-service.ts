@@ -22,6 +22,8 @@ export class TaskService {
     getTasks(): Task[] {
         return this.tasks;
     }
+
+    // setTasks(): 
     
     //Methode pour ajouter une tache
     addTask(){
