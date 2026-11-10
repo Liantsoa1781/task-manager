@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TaskService, Task } from '../task-service';
 import { FormsModule } from '@angular/forms';
 
@@ -14,7 +14,7 @@ import { FormsModule } from '@angular/forms';
 export class TaskDetail {
     task: Task;
 
-    constructor(private route: ActivatedRoute, private taskService: TaskService)
+    constructor(private route: ActivatedRoute, private taskService: TaskService, private router: Router)
     {
       //ActivatedRoute permet a mon composant de lire les informations de l'URL actuelle
       //Récupère le paramètre "id" d'un lien
@@ -25,6 +25,9 @@ export class TaskDetail {
     }
 
     validerModification() {
+      this.taskService.saveTasks();
+      this.router.navigate(['/tasks']);
+      
       console.log('Modification validée');
     }
 }
